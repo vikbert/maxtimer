@@ -1,0 +1,21 @@
+lockfileVersion: 5.3
+
+specifiers:
+  classnames: ^2.3.1
+  preact: ^10.5.13
+
+dependencies:
+  preact: 10.5.13
+
+devDependencies:
+  classnames: 2.3.1
+
+packages:
+
+  /classnames/2.3.1:
+    resolution: {integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==}
+    dev: true
+
+  /preact/10.5.13:
+    resolution: {integrity: sha512-q/vlKIGNwzTLu+jCcvywgGrt+H/1P/oIRSD6mV4ln3hmlC+Aa34C7yfPI4+5bzW8pONyVXYS7SvXosy2dKKtWQ==}
+    dev: false
