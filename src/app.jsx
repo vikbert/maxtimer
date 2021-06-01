@@ -1,44 +1,45 @@
 import {render} from 'preact';
+import {useEffect} from 'preact/hooks';
 import Popup from './components/popup';
 import useVisibility from './hooks/useVisibility';
 import useKeypress from './hooks/useKeyPress';
-import classNames from 'classnames';
 import TimeSlotGenerator from './services/TimeSlotGenerator';
-import SlotRow from './components/slot/SlotRow';
+import useLocalStorage, {APP_KEY_SLOTS} from './hooks/useLocalStorage';
+import SlotList from './components/slot/SlotList';
 
-const generator = new TimeSlotGenerator('06:00', '22:00');
+const generator = new TimeSlotGenerator('06:00', '23:00');
 const slots = generator.getSlots();
-console.log(slots);
 
 function App() {
-  const {visible, show, hide} = useVisibility(false);
-  useKeypress('Escape', () => {
-    hide();
-  });
+    const {visible, show, hide} = useVisibility(false);
+    const [storedValue, setValue] = useLocalStorage(APP_KEY_SLOTS, []);
 
-  const handleOpenPopup = () => {
-    show();
-  };
+    useKeypress('Escape', () => {
+        hide();
+    });
 
-  console.log(slots);
+    const handleOpenPopup = () => {
+        show();
+    };
 
-  return slots.length > 0 && (
-    <>
-      <Popup
-        title="add a new task"
-        visible={visible}
-        action={<h1>content</h1>}
-      />
-      <button onClick={handleOpenPopup}>add new task</button>
-      <div className={classNames('timeline')}>
-        <ul>
-          {slots.map((slot, index) => (
-              <SlotRow key={index} slot={slot} />
-          ))}
-        </ul>
-      </div>
-    </>
-  );
+    useEffect(() => {
+        const listObject = {};
+        slots.forEach((item) => {
+            listObject[item.start.getTime()] = item;
+        });
+        setValue(listObject);
+    }, []);
+
+    return slots.length > 0 && (
+        <>
+            <Popup
+                title="add a new task"
+                visible={visible}
+                action={<h1>content</h1>}
+            />
+            <SlotList/>
+        </>
+    );
 }
 
-render(<App />, document.getElementById('app'));
+render(<App/>, document.getElementById('app'));

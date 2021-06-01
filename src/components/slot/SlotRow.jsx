@@ -1,18 +1,27 @@
 import classNames from 'classnames';
+import {dateToSlotString, isActiveSlot} from '../../utils/Date';
+import {useState} from 'preact/compat';
 
-const SlotRow = ({slot}) => {
-    // 2021-06-01T05:30
-    const dateToSlotString = (date) => {
-        if (!date) {
-            return '';
-        }
+const SlotRow = ({slot, id, updateSlotCallback}) => {
+    const [value, setValue] = useState(slot.title);
+    const handleChangeTitle = (event) => {
+        setValue(event.target.value);
+    };
 
-        return date.toISOString().substr(11, 5);
+    const handleSubmitChangeTitle = (event) => {
+        event.preventDefault();
+        updateSlotCallback(id, {
+            ...slot,
+            title: value,
+        });
     }
+
     return (
-        <li class={classNames({'active': slot.isActive()})}>
-            <span className="time-slot">{`${dateToSlotString(slot.start)} - ${dateToSlotString(slot.end)}`}</span>
-            <span className="content">{slot.title}</span>
+        <li class={classNames({'active': isActiveSlot(slot.start, slot.end)})}>
+            <span className="time-slot">{`${dateToSlotString(new Date(slot.start))} - ${dateToSlotString(new Date(slot.end))}`}</span>
+            <form onsubmit={handleSubmitChangeTitle}>
+                <input class="input-title" type="text" value={value} onchange={handleChangeTitle}/>
+            </form>
         </li>
     );
 };
