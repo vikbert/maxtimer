@@ -4,10 +4,9 @@ const TaskSegment = ({task}) => {
   return (
     <li>
       <span className="time-slot">{`${task.start} - ${task.end}`}</span>
-      <div className="content">
-        <h3>{task.title}</h3>
-        <p className="info">{task.info}</p>
-      </div>
+      <span className="content">
+        {task.title}
+      </span>
     </li>
   );
 }

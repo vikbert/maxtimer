@@ -3,6 +3,7 @@ import TaskSegment from "./components/task/TaskSegment";
 import Popup from "./components/popup";
 import useVisibility from "./hooks/useVisibility";
 import useKeypress from "./hooks/useKeyPress";
+import classNames from 'classnames';
 
 const segmentData = [
   {
@@ -47,9 +48,17 @@ function App() {
     hide();
   });
 
+  const handleOpenPopup = () => {
+    show();
+  }
+
   return (
     <>
-        <div className="timeline">
+      <Popup title='add a new task' visible={visible} action={(
+        <h1>content</h1>
+      )}/>
+      <button onClick={ handleOpenPopup }>add new task</button>
+        <div className={classNames('timeline')}>
           <ul>
             {segmentData.map((item, index) => (
                 <TaskSegment key={index} task={item}/>
