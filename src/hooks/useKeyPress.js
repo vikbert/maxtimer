@@ -1,4 +1,4 @@
-import { useEffect } from 'preact/hooks';
+import {useEffect} from 'preact/hooks';
 export default function useKeypress(key, action) {
   useEffect(() => {
     function onKeyup(event) {

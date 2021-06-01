@@ -4,11 +4,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "format": "prettier --write \"src/**/*.{js,jsx}\""
   },
   "dependencies": {
     "classnames": "^2.3.1",
     "preact": "^10.5.13"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "prettier": "^2.3.0"
+  }
 }

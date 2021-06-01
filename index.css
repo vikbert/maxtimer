@@ -39,7 +39,7 @@ p.info {
   cursor: pointer;
   transition: .5s;
   border-bottom: 1px solid #164256;
-  width: 100vw;
+  width: 88vw;
 }
 
 .timeline ul li span.time-slot {
@@ -47,8 +47,14 @@ p.info {
   background-color: #1685b8;
   border-radius: 25px;
   padding: 2px 10px;
-  font-size: 15px;
+  font-size: 20px;
   text-align: center;
+}
+
+
+.timeline ul li.active span.time-slot {
+  background-color: #14F30C;
+  color: black;
 }
 
 .timeline ul li span.content {
@@ -65,22 +71,23 @@ p.info {
 .timeline ul li:before {
   position: absolute;
   content: '';
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   background-color: #34ace0;
   border-radius: 50%;
-  left: -11px;
-  top: 28px;
+  left: -13px;
+  top: 22px;
   transition: .5s;
 }
 
-.timeline ul li:hover {
-  background-color: #071f2a;
+.timeline ul li:hover span.time-slot {
+   background-color: orange;
+  color: black;
 }
 
-.timeline ul li:hover:before {
-  background-color: #0F0;
-  box-shadow: 0px 0px 10px 2px #0F0;
+.timeline ul li.active:before {
+  background-color: #14f30c;
+  box-shadow: 0px 0px 10px 2px #14F30C;
 }
 
 @media (max-width: 300px) {

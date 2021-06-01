@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import {useState} from 'preact/hooks';
 
 export default function useVisibility(isVisible = false) {
   const [visible, setVisible] = useState(isVisible);
