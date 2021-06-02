@@ -45,6 +45,11 @@ p.info {
   justify-content: start;
   align-items: center;
 }
+.timeline ul li.jump-current span.time-slot {
+  background-color: #d8ff00;
+  color: black;
+  font-size: 17px;
+}
 
 .timeline ul li span.time-slot {
   display: inline-block;
@@ -53,8 +58,8 @@ p.info {
   padding: 2px 10px;
   font-size: 20px;
   text-align: center;
+  width: 150px;
 }
-
 
 .timeline ul li.active span.time-slot {
   background-color: #14F30C;
@@ -102,6 +107,20 @@ input.input-title {
   color: #30a4ea;
   font-size: 18px;
   width: 60vw;
+}
+
+button.start {
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border-radius: .4rem;
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+  background-color: var(--bg-color);
+  color: white;
+}
+button.start:hover {
+  background-color: #30a4ea ;
 }
 
 @media (max-width: 300px) {

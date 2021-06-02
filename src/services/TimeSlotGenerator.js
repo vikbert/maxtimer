@@ -3,22 +3,27 @@ import Slot from '../models/Slot';
 export default class TimeSlotGenerator {
   startDate;
   endDate;
+  slotSize;
 
-  constructor(initStartTime = '21:00', initEndTime = '22:00') {
+  constructor(
+    slotSizeMinutes = 5,
+    initStartTime = '05:00',
+    initEndTime = '24:00',
+  ) {
     const today = new Date();
     const currentDateString = today.toISOString().slice(0, 10);
 
     this.startDate = new Date(`${currentDateString} ${initStartTime}`);
     this.endDate = new Date(`${currentDateString} ${initEndTime}`);
+    this.slotSize = slotSizeMinutes;
   }
 
-  getSlots() {
+  generateSlots() {
     let slots = [];
-    let currentDate = this.startDate;
-    while (currentDate < this.endDate) {
-      slots = [...slots, new Slot(new Date(currentDate))];
-      currentDate.setMinutes(currentDate.getMinutes() + 15);
-      currentDate = new Date(currentDate);
+    let currentSlot = new Slot(this.startDate, '', this.slotSize);
+    while (currentSlot.end < this.endDate) {
+      slots = [...slots, currentSlot];
+      currentSlot = new Slot(currentSlot.end, '', this.slotSize);
     }
 
     return slots;

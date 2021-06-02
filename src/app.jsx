@@ -1,45 +1,23 @@
 import {render} from 'preact';
 import {useEffect} from 'preact/hooks';
-import Popup from './components/popup';
-import useVisibility from './hooks/useVisibility';
-import useKeypress from './hooks/useKeyPress';
-import TimeSlotGenerator from './services/TimeSlotGenerator';
-import useLocalStorage, {APP_KEY_SLOTS} from './hooks/useLocalStorage';
 import SlotList from './components/slot/SlotList';
+import {useState} from 'preact/compat';
 
-const generator = new TimeSlotGenerator('06:00', '23:00');
-const slots = generator.getSlots();
-
+const AUTO_REFRESH_SECONDS = 3;
 function App() {
-    const {visible, show, hide} = useVisibility(false);
-    const [storedValue, setValue] = useLocalStorage(APP_KEY_SLOTS, []);
+  const [time, setTime] = useState(Date.now());
 
-    useKeypress('Escape', () => {
-        hide();
-    });
-
-    const handleOpenPopup = () => {
-        show();
-    };
-
-    useEffect(() => {
-        const listObject = {};
-        slots.forEach((item) => {
-            listObject[item.start.getTime()] = item;
-        });
-        setValue(listObject);
-    }, []);
-
-    return slots.length > 0 && (
-        <>
-            <Popup
-                title="add a new task"
-                visible={visible}
-                action={<h1>content</h1>}
-            />
-            <SlotList/>
-        </>
+  useEffect(() => {
+    const interval = setInterval(
+      () => setTime(Date.now()),
+      AUTO_REFRESH_SECONDS * 1000,
     );
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  return <SlotList />;
 }
 
-render(<App/>, document.getElementById('app'));
+render(<App />, document.getElementById('app'));

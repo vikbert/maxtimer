@@ -1,20 +1,22 @@
 export default class Slot {
-    start;
-    end;
-    title;
+  start;
+  end;
+  size;
+  title;
 
-    constructor(startDate, title = '') {
-        this.start = startDate;
-        const cloned = new Date(startDate);
-        this.end = new Date(cloned.setMinutes(this.start.getMinutes() + 15));
-        this.title = title;
-    }
+  constructor(startDate, title = '', size = 5) {
+    this.start = startDate;
+    const cloned = new Date(startDate);
+    this.size = size;
+    this.end = new Date(cloned.setMinutes(this.start.getMinutes() + size));
+    this.title = title;
+  }
 
-    start() {
-        return this.start;
-    }
+  start() {
+    return this.start;
+  }
 
-    end() {
-        return this.end;
-    }
+  end() {
+    return this.end;
+  }
 }
