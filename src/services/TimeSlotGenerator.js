@@ -6,7 +6,7 @@ export default class TimeSlotGenerator {
   slotSize;
 
   constructor(
-    slotSizeMinutes = 5,
+    slotSizeMinutes = 15,
     initStartTime = '05:00',
     initEndTime = '24:00',
   ) {

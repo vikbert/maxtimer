@@ -14,9 +14,9 @@ export default function SlotList() {
   };
 
   const initSlots = () => {
-    const generator = new TimeSlotGenerator(15);
+    const generator = new TimeSlotGenerator();
 
-    return generator.generateSlots();
+    persist(generator.generateSlots());
   };
 
   const jumpToCurrent = () => {
@@ -26,8 +26,16 @@ export default function SlotList() {
     }
   };
 
+  const handleResetSlots = () => {
+    if (window.confirm('Reset all tasks?')) {
+      initSlots();
+      location.reload();
+    }
+  };
+
   if (Object.keys(storedValue).length === 0) {
-    persist(initSlots());
+    initSlots();
+
     return (
       <div class="overlay open" onClick={refreshPage}>
         <button type="submit" class="start" onClick={refreshPage}>
@@ -40,9 +48,13 @@ export default function SlotList() {
   return (
     <div class="timeline">
       <ul>
-        <li class="jump-current" onClick={jumpToCurrent}>
-          <span className="time-slot">Current Slot</span>
-          <span className="time-slot">Current Slot</span>
+        <li class="jump-current">
+          <span className="time-slot" onClick={jumpToCurrent}>
+            Current
+          </span>
+          <span className="time-slot" onClick={handleResetSlots}>
+            Reset
+          </span>
         </li>
         {Object.keys(storedValue).map((id) => (
           <SlotRow

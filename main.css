@@ -49,6 +49,12 @@ p.info {
   background-color: #d8ff00;
   color: black;
   font-size: 17px;
+  margin-right: 14px;
+}
+
+.timeline ul li.jump-current:hover span.time-slot {
+  background-color: #d8ff00 ;
+  color: black;
 }
 
 .timeline ul li span.time-slot {
@@ -64,6 +70,10 @@ p.info {
 .timeline ul li.active span.time-slot {
   background-color: #14F30C;
   color: black;
+}
+
+span.time-slot:hover {
+  opacity: 50%;
 }
 
 .timeline ul li span.content {
