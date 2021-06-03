@@ -22,7 +22,7 @@ const SlotRow = ({slot, id, updateSlotCallback}) => {
   const isActive = startDate < now && now < endDate;
 
   return (
-    <li class={classNames({active: isActive})}>
+    <li id={ isActive ? 'active': ''} class={classNames({active: isActive})}>
       <span className="time-slot">
         {`${dateToSlotString(startDate)} - ${dateToSlotString(endDate)}`}
       </span>
