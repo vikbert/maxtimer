@@ -16,13 +16,15 @@ const SlotRow = ({slot, id, updateSlotCallback}) => {
     });
   };
 
-  const isActive = isActiveSlot(slot.start, slot.end);
+  const startDate = new Date(slot.start);
+  const endDate = new Date(slot.end);
+  const now = new Date();
+  const isActive = startDate < now && now < endDate;
+
   return (
-    <li id={isActive ? 'active' : ''} class={classNames({active: isActive})}>
+    <li class={classNames({active: isActive})}>
       <span className="time-slot">
-        {`${dateToSlotString(new Date(slot.start))} - ${dateToSlotString(
-          new Date(slot.end),
-        )}`}
+        {`${dateToSlotString(startDate)} - ${dateToSlotString(endDate)}`}
       </span>
       <input
         class="input-title"
