@@ -16,3 +16,13 @@ export const isActiveSlot = (start, end) => {
 
   return start < now && now < end;
 };
+
+export const getTimeInterval = (startHour, endHour) => {
+  let start = new Date();
+  start.setHours(startHour, 0, 0, 0);
+
+  let end = new Date();
+  end.setHours(endHour, 0, 0, 0);
+
+  return [start, end];
+};

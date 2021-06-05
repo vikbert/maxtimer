@@ -1,7 +1,7 @@
 import useLocalStorage, {APP_KEY_SLOTS} from '../../hooks/useLocalStorage';
 import TimeSlotGenerator from '../../services/TimeSlotGenerator';
+import {getTimeInterval} from '../../utils/Date';
 import SlotList from './SlotList';
-import './SlotList.css';
 
 export default function SlotListContainer() {
   const [storedValue, persist] = useLocalStorage(APP_KEY_SLOTS, {});
@@ -45,19 +45,25 @@ export default function SlotListContainer() {
       </div>
       <div className="list-container">
         <div class="timeline box">
+          <h2 className="timeline-title">Morgen</h2>
           <SlotList
+            allowedTimeInterval={getTimeInterval(5, 12)}
             slots={storedValue}
             updateSlotCallback={(id, slot) => updateSlot(id, slot)}
           />
         </div>
         <div class="timeline box">
+          <h2 className="timeline-title">Mittag</h2>
           <SlotList
+            allowedTimeInterval={getTimeInterval(12, 16)}
             slots={storedValue}
             updateSlotCallback={(id, slot) => updateSlot(id, slot)}
           />
         </div>
         <div class="timeline box">
+          <h2 className="timeline-title">Abend</h2>
           <SlotList
+            allowedTimeInterval={getTimeInterval(16, 22)}
             slots={storedValue}
             updateSlotCallback={(id, slot) => updateSlot(id, slot)}
           />

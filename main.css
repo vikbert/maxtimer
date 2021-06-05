@@ -16,7 +16,14 @@ body {
   display: flex;
   justify-content: flex-start;
 }
-
+.list-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+}
+.box {
+  flex: 1 1 100px;
+}
 .timeline {
   background-color: #072736;
   color: #fff;
@@ -25,6 +32,12 @@ body {
 
 p.info {
   color: #626161;
+}
+
+.timeline-title {
+  padding: 0 0 .4rem 2rem;
+  opacity: 50%;
+  color: #34ace0;
 }
 
 .timeline ul {
