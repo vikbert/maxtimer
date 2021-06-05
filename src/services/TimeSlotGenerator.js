@@ -7,8 +7,8 @@ export default class TimeSlotGenerator {
 
   constructor(
     slotSizeMinutes = 15,
-    initStartTime = '05:00',
-    initEndTime = '24:00',
+    initStartTime = '06:00',
+    initEndTime = '12:00',
   ) {
     const today = new Date();
     const currentDateString = today.toISOString().slice(0, 10);

@@ -1,7 +1,7 @@
 import {render} from 'preact';
 import {useEffect} from 'preact/hooks';
-import SlotList from './components/slot/SlotList';
 import {useState} from 'preact/compat';
+import SlotListContainer from './components/slot/SlotListContainer';
 
 const AUTO_REFRESH_minutes = 3;
 function App() {
@@ -17,7 +17,7 @@ function App() {
     };
   }, []);
 
-  return <SlotList />;
+  return <SlotListContainer />;
 }
 
 render(<App />, document.getElementById('app'));
