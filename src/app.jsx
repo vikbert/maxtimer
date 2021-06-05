@@ -10,11 +10,18 @@ const supabaseUrl = 'https://rfvuywxobqfyspzstpya.supabase.co'
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
 
-let { data, error } = await supabase
+const fetchRecords = async () => {
+  let { data, error } = await supabase
   .from('record')
   .select('*')
 
-  console.log('fetched data: ', data)
+  if (error) {
+    console.log('error', error)
+  } else {
+    console.log('fetched data: ', data)
+  }
+}
+
 
 
 const AUTO_REFRESH_minutes = 3;
@@ -29,6 +36,10 @@ function App() {
     return () => {
       clearInterval(interval);
     };
+  }, []);
+
+  useEffect(() => {
+    fetchRecords();
   }, []);
 
   return <SlotListContainer />;

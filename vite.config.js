@@ -5,6 +5,9 @@ export default ({
 function preactPreset() {
   return [
     {
+      future: {
+        webpack5: true,
+      },
       name: 'preact-preset',
       enforce: 'pre',
       config: () => ({
