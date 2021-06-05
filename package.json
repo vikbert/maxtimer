@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "classnames": "^2.3.1",
+    "native-toast": "^2.0.0",
     "preact": "^10.5.13"
   },
   "devDependencies": {

@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import {dateToSlotString, isActiveSlot} from '../../utils/Date';
+import {dateToSlotString} from '../../utils/Date';
 import {useState} from 'preact/compat';
 
-const SlotRow = ({slot, id, updateSlotCallback}) => {
+const SlotRow = ({slot, id, updateSlotCallback, alertTimeOut}) => {
   const [task, setTask] = useState(slot.title);
   const handleChangeTitle = (event) => {
     const userInput = event.target.value;
@@ -16,6 +16,10 @@ const SlotRow = ({slot, id, updateSlotCallback}) => {
     });
   };
 
+  const handleAlertTimeOut = (slotObj) => {
+    alertTimeOut(new Date(slotObj.end));
+  };
+
   const startDate = new Date(slot.start);
   const endDate = new Date(slot.end);
   const now = new Date();
@@ -23,7 +27,7 @@ const SlotRow = ({slot, id, updateSlotCallback}) => {
 
   return (
     <li id={isActive ? 'active' : ''} class={classNames({active: isActive})}>
-      <span className="time-slot">
+      <span className="time-slot" onClick={() => handleAlertTimeOut(slot)}>
         {`${dateToSlotString(startDate)} - ${dateToSlotString(endDate)}`}
       </span>
       <input

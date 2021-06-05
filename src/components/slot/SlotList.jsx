@@ -1,5 +1,7 @@
 import React from 'react';
 import SlotRow from './SlotRow';
+import useToast from './../../hooks/useToast';
+import {useState} from 'preact/hooks';
 
 export default function SlotList({
   allowedTimeInterval,
@@ -7,6 +9,29 @@ export default function SlotList({
   updateSlotCallback,
 }) {
   const [intervalStart, intervalEnd] = allowedTimeInterval;
+  const notify = useToast();
+
+  const alertTimeOut = (slotEndDate) => {
+    if (slotEndDate <= new Date()) {
+      notify({
+        type: 'error',
+        message: 'Alert the slot in the past is not possible!',
+      });
+
+      return;
+    }
+
+    notify({
+      type: 'success',
+      message: 'Alert is set for ' + slotEndDate.toLocaleTimeString(),
+    });
+    const diffInMilliSeconds = slotEndDate.getTime() - new Date().getTime();
+    setTimeout(() => {
+      window.speechSynthesis.speak(
+        new SpeechSynthesisUtterance('Die Zeit ist um.'),
+      );
+    }, diffInMilliSeconds);
+  };
 
   return (
     <ul>
@@ -27,6 +52,7 @@ export default function SlotList({
             key={id}
             id={id}
             slot={slot}
+            alertTimeOut={(endDate) => alertTimeOut(endDate)}
             updateSlotCallback={(id, slot) => updateSlotCallback(id, slot)}
           />
         );

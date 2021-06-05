@@ -2,6 +2,7 @@ import {render} from 'preact';
 import {useEffect} from 'preact/hooks';
 import {useState} from 'preact/compat';
 import SlotListContainer from './components/slot/SlotListContainer';
+import 'native-toast/dist/native-toast.css';
 
 const AUTO_REFRESH_minutes = 3;
 function App() {
