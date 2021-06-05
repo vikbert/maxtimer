@@ -19,3 +19,8 @@ Note:
 Step 0: Only once, install Vite as global   
 `npm install -g vite`
 
+
+## Resource
+
+<https://github.com/supabase/supabase/tree/master/examples/react-todo-list>
+
