@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CloseSvg({width = 24, height = 24, color = '#ffffff'}) {
+export default function SvgClose({width = 24, height = 24, color = '#ffffff'}) {
   return (
     <>
       <svg

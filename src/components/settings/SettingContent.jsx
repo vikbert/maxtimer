@@ -42,6 +42,7 @@ export default function SettingContent({storedValue, persist}) {
       <form className="setting-form" onSubmit={handleSubmit}>
         <div className="start-end-time">
           <Input
+            className="slot-size"
             type="number"
             name="size"
             value={formData.size}
@@ -55,7 +56,7 @@ export default function SettingContent({storedValue, persist}) {
             type="time"
             name="start"
             value={formData.start}
-            label="Start time of the day"
+            label="Start Time"
             placeholder="Enter the start time of a day"
             onChangeCallback={(inputName, inputValue) =>
               handleChangeFormData(inputName, inputValue)
@@ -65,14 +66,16 @@ export default function SettingContent({storedValue, persist}) {
             type="time"
             name="end"
             value={formData.end}
-            label="End time of the day"
+            label="End Time"
             placeholder="Enter the start time of a day"
             onChangeCallback={(inputName, inputValue) =>
               handleChangeFormData(inputName, inputValue)
             }
           />
         </div>
-        <input type="submit" value="save" />
+        <div className="action">
+          <input type="submit" value="save the setting" />
+        </div>
       </form>
     </div>
   );
