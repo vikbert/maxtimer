@@ -15,7 +15,7 @@ export default class TimeSlotGenerator {
 
     this.startDate = new Date(`${currentDateString} ${initStartTime}`);
     this.endDate = new Date(`${currentDateString} ${initEndTime}`);
-    this.slotSize = slotSizeMinutes;
+    this.slotSize = Number(slotSizeMinutes);
   }
 
   generateSlots() {

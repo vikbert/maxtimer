@@ -1,7 +1,6 @@
 import React from 'react';
 import SlotRow from './SlotRow';
 import useToast from './../../hooks/useToast';
-import {useState} from 'preact/hooks';
 
 export default function SlotList({
   allowedTimeInterval,

@@ -16,6 +16,20 @@ body {
   display: flex;
   justify-content: flex-start;
 }
+ul {
+  list-style: none;
+}
+button {
+  border: none;
+}
+button:focus {
+  border: none !important;
+  outline: none !important;
+}
+input.input-title {
+  outline: none !important;
+  border: none !important;
+}
 .list-container {
   display: flex;
   flex-wrap: wrap;
@@ -52,26 +66,10 @@ p.info {
   cursor: pointer;
   transition: .5s;
   border-bottom: 1px solid #164256;
-
+  margin-bottom: none;
   display: flex;
   justify-content: start;
   align-items: center;
-}
-.actions {
-  padding: 1rem 2rem;
-}
-.actions button {
-  cursor: pointer;
-  background-color: #d8ff00;
-  padding: .4rem 1.6rem;
-  border-radius: .8rem;
-  color: rgb(66, 65, 65);
-  font-size: 17px;
-  margin-right: 14px;
-}
-
-.actions button:hover {
-  opacity: 50%;
 }
 
 .timeline ul li span.time-slot {
@@ -81,7 +79,7 @@ p.info {
   padding: 2px 6px;
   font-size: 15px;
   text-align: center;
-  min-width: 100px;
+  min-width: 110px;
 }
 
 @media screen and (max-width: 440px) {
@@ -139,20 +137,6 @@ input.input-title {
   padding: .4rem 1rem;
   color: #30a4ea;
   font-size: 18px;
-}
-
-button.start {
-  cursor: pointer;
-  padding: 1rem 2rem;
-  border-radius: .4rem;
-  outline: none;
-  border: none;
-  font-size: 1.5rem;
-  background-color: var(--bg-color);
-  color: white;
-}
-button.start:hover {
-  background-color: #30a4ea ;
 }
 
 @media (max-width: 300px) {

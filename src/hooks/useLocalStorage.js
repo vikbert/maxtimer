@@ -1,6 +1,7 @@
 import {useState} from 'preact/hooks';
 
 export const APP_KEY_SLOTS = 'MAX_TIMER_SLOTS';
+export const APP_KEY_SETTING = 'MAX_TIMER_SETTING';
 export default function useLocalStorage(key, initialValue = {}) {
   const [storedValue, setStoredValue] = useState(() => {
     try {

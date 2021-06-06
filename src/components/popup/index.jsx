@@ -1,16 +1,15 @@
-import './index.css';
 import classNames from 'classnames';
+import CloseSvg from './CloseSvg';
+import './index.css';
 
-export default function Popup(props) {
-  const {title = 'Popup title', content, visible} = props;
-
+export default function Popup({hide, visible, children}) {
   return (
     <>
-      <div class={classNames('overlay', {open: visible})}>
-        <div class="popup">
-          <div class="title">{title}</div>
-          <div class="content">{content}</div>
+      <div class={classNames('overlay', {'scale-in-ver-center': visible})}>
+        <div className="close-icon" onClick={() => hide()}>
+          <CloseSvg width={40} height={40} />
         </div>
+        {children}
       </div>
     </>
   );
