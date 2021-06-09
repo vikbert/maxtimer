@@ -1,6 +1,7 @@
 import React from 'react';
 import SlotRow from './SlotRow';
 import useToast from './../../hooks/useToast';
+import textToSpeech from '../../utils/speak';
 
 export default function SlotList({
   allowedTimeInterval,
@@ -24,11 +25,13 @@ export default function SlotList({
       type: 'success',
       message: 'Alert is set for ' + slotEndDate.toLocaleTimeString(),
     });
+
+
+    textToSpeech('Alarm ist eingestellt');
+
     const diffInMilliSeconds = slotEndDate.getTime() - new Date().getTime();
     setTimeout(() => {
-      window.speechSynthesis.speak(
-        new SpeechSynthesisUtterance('Die Zeit ist um.'),
-      );
+      textToSpeech('Die Zeit ist um.');
     }, diffInMilliSeconds);
   };
 

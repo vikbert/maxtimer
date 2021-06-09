@@ -29,7 +29,7 @@ export default function SettingContent({storedValue, persist}) {
   return (
     <div className="setting-content">
       <h1>
-        <span className="elon">Elon</span> Max Timer
+        <span className="elon">Elon</span> Musk Timer
       </h1>
       <div className="description">
         Elon Musk does it by dividing the day into many <code>time slots</code>,
