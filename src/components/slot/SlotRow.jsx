@@ -33,6 +33,7 @@ const SlotRow = ({slot, id, updateSlotCallback, alertTimeOut}) => {
       <input
         class="input-title"
         name="task"
+        autoComplete='off'
         type="text"
         value={task}
         onchange={handleChangeTitle}
