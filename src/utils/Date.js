@@ -26,3 +26,16 @@ export const getTimeInterval = (startHour, endHour) => {
 
   return [start, end];
 };
+
+export const isDateGone = (date) => {
+  let dateObj = date;
+  if (typeof date === 'string') {
+    dateObj = new Date(date);
+  }
+
+  if (typeof dateObj === 'object') {
+    return (dateObj.getTime() - (new Date()).getTime()) < 0;
+  }
+
+  return false;
+}
