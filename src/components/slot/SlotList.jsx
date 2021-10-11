@@ -27,11 +27,11 @@ export default function SlotList({
     });
 
 
-    textToSpeech('Alarm ist eingestellt');
+    textToSpeech('Alarm is ready');
 
     const diffInMilliSeconds = slotEndDate.getTime() - new Date().getTime();
     setTimeout(() => {
-      textToSpeech('Die Zeit ist um.');
+      textToSpeech('The time is over.');
     }, diffInMilliSeconds);
   };
 
